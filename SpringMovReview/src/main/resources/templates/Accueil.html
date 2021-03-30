@@ -32,9 +32,7 @@
                 <u><h2 data-th-text="${movie[0]}"></h2></u>
                 <img data-th-src="${movie[1]}"></img>
                 <p data-th-text="${movie[2]}"></p>
-                <button>Like !</button><button>Dislike !</button>
-<!--                 <p data-th-text="${movie[3]}"></p>
-                <p data-th-text="${movie[4]}"></p> -->
+                <button data-th-action="@{/like}">Like !</button><button data-th-action="@{/dislike}">Dislike !</button>
                 <p>-----------------------------------------------------------------------------------------------------------------------</p>
             </div>
     </div>

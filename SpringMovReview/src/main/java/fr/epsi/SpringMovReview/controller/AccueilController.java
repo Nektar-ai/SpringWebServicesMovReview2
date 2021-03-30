@@ -37,16 +37,6 @@ public class AccueilController {
 
 			JSONObject obj = new JSONObject(jsonServRemote);
 			JSONArray res = obj.getJSONArray("results");
-			
-//			for (int i = 0; i < res.length() ; i++)
-//			{
-//				String[] mov = {res.getJSONObject(i).getString("original_title"), 
-//						webImgPath+res.getJSONObject(i).getString("poster_path"),
-//						res.getJSONObject(i).getString("release_date"),
-//						String.valueOf(res.getJSONObject(i).getFloat("vote_average")),
-//						res.getJSONObject(i).getString("overview")};
-//				movieList.add(mov);
-//			}
 
 			for (int i = 0; i < res.length() ; i++)
 			{
