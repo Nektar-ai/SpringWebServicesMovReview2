@@ -42,7 +42,7 @@ public class AccueilController {
 //			{
 //				String[] mov = {res.getJSONObject(i).getString("original_title"), 
 //						webImgPath+res.getJSONObject(i).getString("poster_path"),
-//						res.getJSONObject(i).getString("release_date"), 
+//						res.getJSONObject(i).getString("release_date"),
 //						String.valueOf(res.getJSONObject(i).getFloat("vote_average")),
 //						res.getJSONObject(i).getString("overview")};
 //				movieList.add(mov);
@@ -56,7 +56,7 @@ public class AccueilController {
 				movieList.add(mov);
 			}
 			
-			System.out.println("Taille du fichier : "+jsonServ.length());
+			System.out.println("Taille du fichier : "+jsonServRemote.length());
 			System.out.println("Taille de l'array list : "+movieList.size());
 		} catch (IOException e) {
 			e.printStackTrace();
