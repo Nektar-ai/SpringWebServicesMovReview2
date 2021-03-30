@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.epsi.SpringMovReview.service.MovieService;
@@ -42,7 +43,8 @@ public class AccueilController {
 			{
 				String[] mov = {res.getJSONObject(i).getString("original_title"), 
 						webImgPath+res.getJSONObject(i).getString("poster_path"),					
-						res.getJSONObject(i).getString("overview")};
+						res.getJSONObject(i).getString("overview"),
+						res.getJSONObject(i).getString("id")};
 				movieList.add(mov);
 			}
 			
@@ -55,6 +57,16 @@ public class AccueilController {
 		model.addAttribute("movies", movieList);
 		
 		return "accueil";
+	}
+	
+	@PostMapping(path="/like/{id}")
+	public String like() {
+		return "redirect:/";
+	}
+	
+	@PostMapping(path="/dislike/{id}")
+	public String dislike() {
+		return "redirect:/";
 	}
 }
 

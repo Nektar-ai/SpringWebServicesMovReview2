@@ -32,7 +32,8 @@
                 <u><h2 data-th-text="${movie[0]}"></h2></u>
                 <img data-th-src="${movie[1]}"></img>
                 <p data-th-text="${movie[2]}"></p>
-                <button data-th-action="@{/like}">Like !</button><button data-th-action="@{/dislike}">Dislike !</button>
+                <form method="POST" data-th-action="${'/like/'+{movie[3]}}"><button type="submit">Like !</button></form>
+                <form method="POST" data-th-action="${'/dislike/'+{movie[3]}}"><button type="submit">Dislike !</button></form>
                 <p>-----------------------------------------------------------------------------------------------------------------------</p>
             </div>
     </div>

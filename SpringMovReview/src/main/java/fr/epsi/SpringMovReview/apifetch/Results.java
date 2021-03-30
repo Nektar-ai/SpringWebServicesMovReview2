@@ -47,7 +47,7 @@ public class Results {
 		
 	return 		"{" +
 				"\"id\":\"" + id +
-				"\"original_title\":\"" + original_title +
+				"\", \"original_title\":\"" + original_title +
 				"\", \"overview\":\"" + overview.replaceAll("\"", "\\\'") +
 				"\", \"poster_path\":\"" + poster_path + '"' +
 				'}';		
