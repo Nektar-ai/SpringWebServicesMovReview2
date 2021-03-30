@@ -46,9 +46,9 @@ public class Results {
 	public String toString() {
 		
 	return 		"{" +
-				"original_title=" + original_title +
-				", overview=" + overview +
-				", poster_path='" + poster_path + '\'' +
+				"\"original_title\":\"" + original_title +
+				"\", \"overview\":\"" + overview.replaceAll("\"", "\\\'") +
+				"\", \"poster_path\":\"" + poster_path + '"' +
 				'}';		
 	}	
 }

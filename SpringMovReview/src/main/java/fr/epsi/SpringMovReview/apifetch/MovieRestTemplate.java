@@ -45,8 +45,8 @@ public class MovieRestTemplate {
 	this.resultsJsonArrayToString()	;
 		
 		return "{" +
-				"page='" + page + '\'' +
-				", results=[" + 
+				"\"page\":" + page +
+				", \"results\":[" + 
 					rez +				
 				'}';
 	  }	
