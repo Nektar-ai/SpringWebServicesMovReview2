@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+</head>
+<body>
+
+    <style type="text/css">   
+    
+		h1 {
+			font-size: 48px;
+			border:groove 3px;
+			width: fit-content;
+			padding: 5px;
+			padding-left: 20px;
+			padding-right: 20px;
+		}		    	
+
+    	a {font-size: 18px}	
+
+    </style>
+    <div align="center">
+
+
+            <br><br><br><br><br><br>
+        <h1> Welcome in Movie Review </h1>
+            <br><br><br><br><br><br>
+
+            <br>
+            <div data-th-each="movie : ${movies}">
+                <u><h2 data-th-text="${movie[0]}"></h2></u>
+                <p data-th-text="${movie[1]}"></p>
+            </div>
+
+    </div>
+</body>
+</html>
