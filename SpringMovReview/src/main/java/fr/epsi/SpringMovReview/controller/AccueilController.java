@@ -61,18 +61,14 @@ public class AccueilController {
 		
 		return "accueil";
 	}
-	
+	  
 	@PostMapping(path="/like", value="/like")
 	public String like(@ModelAttribute Film film, Model model) {
 		model.addAttribute("film", film);
-
+		System.out.println(film.getIdFilm());
+		film.like();
 		System.out.println("Film liked : " + film.toString());
 		return "redirect:/";
 	}
-	
-	@PostMapping(path="/dislike/{id}")
-	public String dislike() {
-		return "redirect:/";
-	}
-}
-
+} 
+ 

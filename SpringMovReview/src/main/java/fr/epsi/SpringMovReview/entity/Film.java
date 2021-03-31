@@ -54,4 +54,8 @@ public class Film {
                 "Film[id=%s, idFilm='%s', likes='%s']",
                 id, idFilm, likes);
     }
+    
+    public void like() {
+    	this.likes++;
+    }
 }
