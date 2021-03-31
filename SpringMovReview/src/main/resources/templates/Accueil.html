@@ -35,8 +35,10 @@
                 <form method="POST" data-th-action="@{/like}" data-th:object="${film}">
                     <input type="text" data-th:field="id" th:value="${movie[3]}"/>
                     <input type="text" data-th:field="likes" th:value="${movie[3]}" />
+                    <br>
                     <button type="submit">Like !</button>
                 </form>
+                <br>
                 <form method="POST" data-th-action="${'/dislike/'+{movie[3]}}">
 
                     <button type="submit">Dislike !</button>

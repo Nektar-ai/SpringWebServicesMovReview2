@@ -3,14 +3,38 @@ package fr.epsi.SpringMovReview.entity;
 
 import org.springframework.data.annotation.Id;
 
-
 public class Film {
 
     @Id
     public String id;
-
     public String idFilm;
     public int likes;
+    
+    public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getIdFilm() {
+		return idFilm;
+	}
+
+	public void setIdFilm(String idFilm) {
+		this.idFilm = idFilm;
+	}
+
+	public int getLikes() {
+		return likes;
+	}
+
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
+
+	
 
     public Film() {
     }
@@ -19,6 +43,11 @@ public class Film {
         this.idFilm = id;
     }
 
+    public Film(String id, int likes) {
+        this.idFilm = id;
+        this.likes = likes;
+    }
+    
     @Override
     public String toString() {
         return String.format(

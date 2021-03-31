@@ -47,6 +47,7 @@ public class AccueilController {
 				movieList.add(mov);
 			}
 			
+			
 			System.out.println("Taille du fichier : "+jsonServRemote.length());
 			System.out.println("Taille de l'array list : "+movieList.size());
 		} catch (IOException e) {
@@ -56,15 +57,16 @@ public class AccueilController {
 		model.addAttribute("movies", movieList);
 		model.addAttribute("film", new Film());
 
-
+		movieService.SaveData("GreatMovie");
+		
 		return "accueil";
 	}
 	
-	@PostMapping(path="/like")
+	@PostMapping(path="/like", value="/like")
 	public String like(@ModelAttribute Film film, Model model) {
 		model.addAttribute("film", film);
 
-		System.out.println("Film liked" + film.toString());
+		System.out.println("Film liked : " + film.toString());
 		return "redirect:/";
 	}
 	

@@ -22,7 +22,6 @@ import fr.epsi.SpringMovReview.apifetch.MovieRestTemplate;
 public class SpringMovReviewApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(SpringMovReviewApplication.class);
-	private FilmRepository repository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringMovReviewApplication.class, args);
