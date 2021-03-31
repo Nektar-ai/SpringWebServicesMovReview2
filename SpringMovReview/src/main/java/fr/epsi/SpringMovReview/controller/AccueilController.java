@@ -3,14 +3,13 @@ package fr.epsi.SpringMovReview.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import fr.epsi.SpringMovReview.entity.Film;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.epsi.SpringMovReview.service.MovieService;
@@ -55,12 +54,17 @@ public class AccueilController {
 		}
 		
 		model.addAttribute("movies", movieList);
-		
+		model.addAttribute("film", new Film());
+
+
 		return "accueil";
 	}
 	
-	@PostMapping(path="/like/{id}")
-	public String like() {
+	@PostMapping(path="/like")
+	public String like(@ModelAttribute Film film, Model model) {
+		model.addAttribute("film", film);
+
+		System.out.println("Film liked" + film.toString());
 		return "redirect:/";
 	}
 	

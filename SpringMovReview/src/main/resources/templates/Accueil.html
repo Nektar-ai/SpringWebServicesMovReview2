@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:data-th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Accueil</title>
@@ -32,8 +32,15 @@
                 <u><h2 data-th-text="${movie[0]}"></h2></u>
                 <img data-th-src="${movie[1]}"></img>
                 <p data-th-text="${movie[2]}"></p>
-                <form method="POST" data-th-action="${'/like/'+{movie[3]}}"><button type="submit">Like !</button></form>
-                <form method="POST" data-th-action="${'/dislike/'+{movie[3]}}"><button type="submit">Dislike !</button></form>
+                <form method="POST" data-th-action="@{/like}" data-th:object="${film}">
+                    <input type="text" data-th:field="id" th:value="${movie[3]}"/>
+                    <input type="text" data-th:field="likes" th:value="${movie[3]}" />
+                    <button type="submit">Like !</button>
+                </form>
+                <form method="POST" data-th-action="${'/dislike/'+{movie[3]}}">
+
+                    <button type="submit">Dislike !</button>
+                </form>
                 <p>-----------------------------------------------------------------------------------------------------------------------</p>
             </div>
     </div>
