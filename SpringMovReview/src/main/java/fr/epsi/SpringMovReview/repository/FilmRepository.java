@@ -9,6 +9,6 @@ public interface FilmRepository extends MongoRepository<Film, String> {
 
     public Film findByIdFilm(String idFilm);
     
-    public Film findByName(String name);
+    public Film findByTitle(String original_title);
 
 }

@@ -8,7 +8,7 @@ public class Film {
     @Id
     public String id;
     public String idFilm;
-    public String name;
+    public String title;
     public int likes;
     
     public Film() {
@@ -18,12 +18,12 @@ public class Film {
         this.idFilm = id;
     }
 
-    public String getName() {
-		return name;
+    public String getTitle() {
+		return title;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String title) {
+		this.title = title;
 	}
 
 	public Film(String id, int likes) {
@@ -35,7 +35,7 @@ public class Film {
     	this.id = f.getId();
     	this.idFilm = f.getIdFilm();
     	this.likes = f.getLikes();
-    	this.name = f.getName();
+    	this.title = f.getTitle();
     }
     
     public String getId() {
