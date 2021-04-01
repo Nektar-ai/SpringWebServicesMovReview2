@@ -44,6 +44,7 @@ public class MovieService {
 		Film f2 = movieRepository.findByIdFilm(f.idFilm);
 		if (f2 == null)
 		{
+			f.setLikes(1);
 			movieRepository.save(f);
 		} else {
 			f2.setLikes(f2.getLikes()+1);
@@ -56,6 +57,7 @@ public class MovieService {
 		Film f2 = movieRepository.findByIdFilm(f.idFilm);
 		if (f2 == null)
 		{
+			f.setLikes(-1);
 			movieRepository.save(f);
 		} else {
 			f2.setLikes(f2.getLikes()-1);
