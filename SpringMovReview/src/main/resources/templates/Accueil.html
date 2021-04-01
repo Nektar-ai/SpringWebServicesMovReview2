@@ -64,6 +64,21 @@
     		</div>
         </div>
     </div>
+    <script>
+
+		let card = document.querySelectorAll(".bgdivdad");
+		for (let i = 0; i < card.length; i++)
+			{
+
+				card[i].addEventListener("onmouseenter", ()=> {
+					card[i].classList.add("zindex-tooltip");
+					})
+				card[i].addEventListener("onmouseout", ()=> {
+					card[i].classList.remove("zindex-tooltip");
+					})
+			}
+
+    </script>
 </body>
 </html>
 
