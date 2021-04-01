@@ -2,8 +2,6 @@ package fr.epsi.SpringMovReview.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-import fr.epsi.SpringMovReview.entity.Film;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import fr.epsi.SpringMovReview.entity.Film;
 import fr.epsi.SpringMovReview.service.MovieService;
 
 @Controller
@@ -28,10 +26,6 @@ public class AccueilController {
 		ArrayList<String[]> movieList = new ArrayList<String[]>();
 		try {					
 			jsonServRemote = movieService.loadJsonRemote();
-			
-			System.out.println("JSON REMOTE FROM CONTROLLER MATE : "+jsonServRemote);
-			
-			ObjectMapper mapper = new ObjectMapper();
 
 			JSONObject obj = new JSONObject(jsonServRemote);
 			JSONArray res = obj.getJSONArray("results");
@@ -65,7 +59,6 @@ public class AccueilController {
 		return "accueil";
 	}
 
-	
 	@PostMapping("/like")
 	public String like(@ModelAttribute Film film, Model model) {
 		model.addAttribute("film", film);

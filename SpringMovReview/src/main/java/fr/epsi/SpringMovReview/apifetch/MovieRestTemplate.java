@@ -8,8 +8,6 @@ public class MovieRestTemplate {
 	private String page;
 	private Results[] results;
 	private String rez = "";
-
-		
 	
 	private String resultsJsonArrayToString()
 	{
