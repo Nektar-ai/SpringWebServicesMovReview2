@@ -2,6 +2,10 @@ package fr.epsi.SpringMovReview.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.ServletRequestUtils;
+
+import fr.epsi.SpringMovReview.dto.FilmDTO;
 import fr.epsi.SpringMovReview.entity.Film;
 import fr.epsi.SpringMovReview.service.MovieService;
 
@@ -57,6 +65,14 @@ public class AccueilController {
 		model.addAttribute("film", film);		
 		
 		return "accueil";
+	}
+	
+	@GetMapping("/research")
+	public String research(@ModelAttribute FilmDTO filmdto, Model model) {
+		String title = filmdto.getName();
+		System.out.println(title + "      |?|?|?|?|?|?|?|?|?|?|?|?|?|?|?|?|?|?|?|?|?|?|?|?|?|?|?|");
+		//Film film = movieService.findFilmByName(title);
+		return "redirect:/";
 	}
 
 	@PostMapping("/like")

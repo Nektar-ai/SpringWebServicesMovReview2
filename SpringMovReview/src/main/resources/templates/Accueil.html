@@ -40,6 +40,12 @@
         <h1> Welcome in Movie Review </h1>
             	<br><br><br><br>
 
+			<form method="GET" th:action="@{/research}" th:object="${filmdto}">
+				<input id="research" type="search" name="original_title" 
+					placeholder="Find u're movie bro" th:value="${original_title}">
+				<button type="submit">GO</button>
+			</form>
+
             <br>
             <div data-th-each="movie : ${movies}">
                 <u><h2 data-th-text="${movie[0]}"></h2></u>
