@@ -9,8 +9,19 @@
 	.bgdivdad {
 	
 		background-color: #8e7f7f!important;
-				
+		max-width: 1382px;
+		min-width: 1182px;
 	
+	}
+	
+	.reverse:nth-child(even) .bgdivdad {
+    
+    	flex-direction: row-reverse;
+	}
+
+	.reverse:nth-child(even) .bgdivdad > .img {
+    
+    	flex-direction: row!important;
 	}
 	
 	.homerounded {
@@ -25,6 +36,25 @@
 	
 	}
 	
+	.reverse:nth-child(even) .reversemagic {
+	
+		
+		right: 15%!important;
+		left: 0;
+	}
+	
+	.reversemagic {
+	
+		left: 5%;
+	
+	}
+	
+	.homecard {
+	
+		height: 55vh;
+	
+	}
+	
 	.homecounter {
 	
 		min-width: 35%;
@@ -32,8 +62,15 @@
 	
 	}
 	
+	.homecounter > p {
+	
+		top: 14%;
+		z-index: 8000;
+	
+	}
+	
 	h1 {
-		font-size: 72px;
+		font-size: 66px!important;
 		border:groove 3px;
 		width: fit-content;
 		padding: 5px;
@@ -60,11 +97,27 @@
 		
 	}
 	
-	svg {
+	.heart {
+	
+		height: 65px;
+		width: 65px;
+		top: calc(50% - (65px / 2));
+		left: calc(50% - (65px / 2));
+	}
+	
+	/* svg {
 	
 		height: 65px;
 		width: 65px;
 		top: calc(50% - (65px / 2));
 		left: calc(50% - (65px / 2));
 	
+	} */
+	
+	.buttonlike {
+	
+		height: 25px;
+		width: 25px;		
+	
 	}
+	
