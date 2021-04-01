@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import fr.epsi.SpringMovReview.entity.Film;
 import fr.epsi.SpringMovReview.service.MovieService;
@@ -60,11 +61,11 @@ public class AccueilController {
 	}
 
 	@PostMapping("/like")
-	public String like(@ModelAttribute Film film, Model model) {
+	public RedirectView like(@ModelAttribute Film film, Model model) {
 		model.addAttribute("film", film);
 		movieService.like(film);
 		System.out.println("Film liked APRES REPO : " + film.toString());
-		return "redirect:/";
+		return new RedirectView("/");
 	}
 
 	@PostMapping("/dislike/{id}")
@@ -74,5 +75,3 @@ public class AccueilController {
 		return "redirect:/";
 	}
 }
-
- 
