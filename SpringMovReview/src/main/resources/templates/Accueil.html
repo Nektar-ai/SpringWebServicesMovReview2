@@ -17,31 +17,47 @@
 			padding-right: 20px;
 		}		    	
 
-    	a {font-size: 18px}	
+		h2 {
+			font-size: 38px;						
+			padding: 5px;
+			margin-bottom: 50px;
+		}
 
+    	a {font-size: 18px}	
+		
+		p {
+			max-width: 700px;
+			margin-top: 30px;
+			margin-bottom: 30px;
+		}
+		
     </style>
     <div align="center">
 
 
             <br><br><br><br><br><br>
         <h1> Welcome in Movie Review </h1>
-            <br><br><br><br><br><br>
+            	<br><br><br><br>
 
             <br>
             <div data-th-each="movie : ${movies}">
                 <u><h2 data-th-text="${movie[0]}"></h2></u>
                 <img data-th-src="${movie[1]}"></img>
                 <p data-th-text="${movie[2]}"></p>
-                <form method="POST" data-th-action="@{/like}" data-th:object="${film}">
-                    <input type="text" data-th:field="id" th:value="${movie[3]}"/>
-                    <input type="text" data-th:field="likes" th:value="${movie[3]}" />
+                <!-- <div style="display: flex; flex-direction: row; "> -->
+                <img src="../static/Heart_Like.png" width="20" height="20" th:src="@{Heart_Like.png}"/>
+                <p data-th-text="${movie[4]}"></p>
+                <!-- </div> -->
+                <form method="POST" data-th-action="@{/like}" th:object="${film}">
+                    <input type="hidden" name="idFilm" th:value="${movie[3]}"/>
                     <br>
-                    <button type="submit">Like !</button>
+                    <input type="submit" value="Like !"/>
                 </form>
-                <br>
-                <form method="POST" data-th-action="${'/dislike/'+{movie[3]}}">
-
-                    <button type="submit">Dislike !</button>
+                
+                <form method="POST" data-th-action="${'/dislike/'+{movie[3]}}" data-th-object="${film}">
+					<input type="hidden" name="idFilm" th:value="${movie[3]}"/>
+                    <br>
+                    <input type="submit" value="Dislike !"/>
                 </form>
                 <p>-----------------------------------------------------------------------------------------------------------------------</p>
             </div>

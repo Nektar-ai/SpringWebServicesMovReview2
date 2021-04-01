@@ -39,10 +39,35 @@ public class MovieService {
         return mrt.toString();
 	}
 	
-	public void SaveData (String s)
+	public void like (Film f)
 	{
-		movieRepository.save(new Film(s));
+		Film f2 = movieRepository.findByIdFilm(f.idFilm);
+		if (f2 == null)
+		{
+			movieRepository.save(f);
+		} else {
+			f2.setLikes(f2.getLikes()+1);
+			movieRepository.save(f2);
+		}
 	}
+	
+	public void dislike (Film f)
+	{
+		Film f2 = movieRepository.findByIdFilm(f.idFilm);
+		if (f2 == null)
+		{
+			movieRepository.save(f);
+		} else {
+			f2.setLikes(f2.getLikes()-1);
+			movieRepository.save(f2);
+		}
+	}
+	
+	public Film findFilmByIdFilm(String id) {
+		Film f = movieRepository.findByIdFilm(id);
+		return f;
+	}
+	
 }
 
 //Path fileName = Path.of("static/moviejson.txt");    

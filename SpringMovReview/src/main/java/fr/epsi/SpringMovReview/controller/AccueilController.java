@@ -20,15 +20,13 @@ public class AccueilController {
 	@Autowired
 	private MovieService movieService;
 	
-	@GetMapping(path="/")
-	public String accueillir(@ModelAttribute("movies") ArrayList<String[]> m, Model model) {
+	@GetMapping("/")
+	public String accueillir(@ModelAttribute("movies") ArrayList<String[]> m, @ModelAttribute Film film, Model model) {
 		
 		String webImgPath = "https://image.tmdb.org/t/p/w500";
-		String jsonServ;
 		String jsonServRemote;
 		ArrayList<String[]> movieList = new ArrayList<String[]>();
-		try {		
-			jsonServ = movieService.loadJson();
+		try {					
 			jsonServRemote = movieService.loadJsonRemote();
 			
 			System.out.println("JSON REMOTE FROM CONTROLLER MATE : "+jsonServRemote);
@@ -40,38 +38,46 @@ public class AccueilController {
 
 			for (int i = 0; i < res.length() ; i++)
 			{
+				String s;
+				film = movieService.findFilmByIdFilm(res.getJSONObject(i).getString("id"));
+				if (film == null)
+				{
+					s = "0";
+				} else {
+					s = String.valueOf(film.getLikes());
+				}
+				
 				String[] mov = {res.getJSONObject(i).getString("original_title"), 
 						webImgPath+res.getJSONObject(i).getString("poster_path"),					
 						res.getJSONObject(i).getString("overview"),
-						res.getJSONObject(i).getString("id")};
+						res.getJSONObject(i).getString("id"),
+						s};				
 				movieList.add(mov);
 			}
-			
-			
-			System.out.println("Taille du fichier : "+jsonServRemote.length());
-			System.out.println("Taille de l'array list : "+movieList.size());
+				
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
 		model.addAttribute("movies", movieList);
-		model.addAttribute("film", new Film());
-
-		movieService.SaveData("GreatMovie");
+		model.addAttribute("film", film);		
 		
 		return "accueil";
 	}
 	
-	@PostMapping(path="/like", value="/like")
+
+	@PostMapping("/like")
 	public String like(@ModelAttribute Film film, Model model) {
 		model.addAttribute("film", film);
-
-		System.out.println("Film liked : " + film.toString());
+		movieService.like(film);
+		System.out.println("Film liked APRES REPO : " + film.toString());
 		return "redirect:/";
 	}
 	
-	@PostMapping(path="/dislike/{id}")
-	public String dislike() {
+	@PostMapping("/dislike/{id}")
+	public String dislike(@ModelAttribute Film film, Model model) {
+		model.addAttribute("film", film);
+		movieService.dislike(film);
 		return "redirect:/";
 	}
 }

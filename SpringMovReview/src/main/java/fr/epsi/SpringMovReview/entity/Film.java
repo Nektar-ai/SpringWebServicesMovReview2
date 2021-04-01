@@ -10,10 +10,28 @@ public class Film {
     public String idFilm;
     public int likes;
     
+    public Film() {
+    }
+
+    public Film(String id) {
+        this.idFilm = id;
+    }
+
+    public Film(String id, int likes) {
+        this.idFilm = id;
+        this.likes = likes;
+    }
+    
+    public Film (Film f) {
+    	this.id = f.getId();
+    	this.idFilm = f.getIdFilm();
+    	this.likes = f.getLikes();
+    }
+    
     public String getId() {
 		return id;
 	}
-
+    
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -33,20 +51,6 @@ public class Film {
 	public void setLikes(int likes) {
 		this.likes = likes;
 	}
-
-	
-
-    public Film() {
-    }
-
-    public Film(String id) {
-        this.idFilm = id;
-    }
-
-    public Film(String id, int likes) {
-        this.idFilm = id;
-        this.likes = likes;
-    }
     
     @Override
     public String toString() {
