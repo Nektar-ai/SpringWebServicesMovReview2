@@ -64,8 +64,8 @@ public class AccueilController {
 		
 		return "accueil";
 	}
-	
 
+	
 	@PostMapping("/like")
 	public String like(@ModelAttribute Film film, Model model) {
 		model.addAttribute("film", film);
@@ -73,7 +73,7 @@ public class AccueilController {
 		System.out.println("Film liked APRES REPO : " + film.toString());
 		return "redirect:/";
 	}
-	
+
 	@PostMapping("/dislike/{id}")
 	public String dislike(@ModelAttribute Film film, Model model) {
 		model.addAttribute("film", film);
@@ -82,3 +82,4 @@ public class AccueilController {
 	}
 }
 
+ 
