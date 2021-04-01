@@ -1,18 +1,51 @@
 @charset "ISO-8859-1";
 
+	body {
+	
+		background-color: #e2d5d5!important
+	
+	}
+	
+	.bgdivdad {
+	
+		background-color: #8e7f7f!important;
+				
+	
+	}
+	
+	.homerounded {
+	
+		border-radius: 15px;
+		
+	}
+	
+	.bgdivmov {
+	
+		background-color: #8e7f7f!important
+	
+	}
+	
+	.homecounter {
+	
+		min-width: 35%;
+		position: relative;
+	
+	}
+	
 	h1 {
-		font-size: 48px;
+		font-size: 72px;
 		border:groove 3px;
 		width: fit-content;
 		padding: 5px;
 		padding-left: 20px;
-		padding-right: 20px;
+		padding-right: 20px;		
 	}		    	
 
 	h2 {
-		font-size: 38px;						
+		font-size: 36px!important;						
 		padding: 5px;
 		margin-bottom: 50px;
+		text-decoration: underline;
 	}
 
    	a {font-size: 18px}	
@@ -21,4 +54,17 @@
 		max-width: 700px;
 		margin-top: 30px;
 		margin-bottom: 30px;
+		font-size: 18px;
+		text-align: justify;
+		line-height: 28px;
+		
+	}
+	
+	svg {
+	
+		height: 65px;
+		width: 65px;
+		top: calc(50% - (65px / 2));
+		left: calc(50% - (65px / 2));
+	
 	}
