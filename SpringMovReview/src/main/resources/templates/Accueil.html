@@ -24,14 +24,14 @@
 	                	<img class="w-100 homerounded" data-th-src="${movie[1]}"></img>
 		            </div>
 		            
-		            <div class="col-7 pl-3 d-flex justify-content-center w-100">
-		              	<div class="h-100 justify-content-between px-5 py-4 col-lg-9 bgdivmov flex-column d-flex">
+		            <div class="col-8 pl-3 d-flex justify-content-center w-100">
+		              	<div class="h-100 justify-content-between py-4 col-lg-9 bgdivmov flex-column d-flex">
 			              	<div>
 			              	  	<h2 class="my-5 text-light" data-th-text="${movie[0]}"></h2>
-				                <p class="text-light" data-th-text="${movie[2]}"></p>
+				                <p class="text-light text-ellipsis" data-th-text="${movie[2]}"></p>
 			                </div>
 				                
-			                <div class="d-flex justify-content-around">
+			                <div class="d-flex justify-content-center">
 				                
 				                <form method="POST" data-th-action="@{/like}" th:object="${film}">
 				                    <input type="hidden" name="idFilm" th:value="${movie[3]}"/>
