@@ -8,5 +8,7 @@ import fr.epsi.SpringMovReview.entity.Film;
 public interface FilmRepository extends MongoRepository<Film, String> {
 
     public Film findByIdFilm(String idFilm);
+    
+    public Film findByTitle(String original_title);
 
 }

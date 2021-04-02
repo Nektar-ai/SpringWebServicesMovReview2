@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:data-th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>MovieReview Research</title>
+
+    <style type="text/css">   
+    
+		h1 {
+			font-size: 48px;
+			border:groove 3px;
+			width: fit-content;
+			padding: 5px;
+			padding-left: 20px;
+			padding-right: 20px;
+		}		    	
+
+		h2 {
+			font-size: 38px;						
+			padding: 5px;
+			margin-bottom: 50px;
+		}
+
+    	a {font-size: 18px}	
+		
+		p {
+			max-width: 700px;
+			margin-top: 30px;
+			margin-bottom: 30px;
+		}
+		
+    </style>
+
+</head>
+<body>
+
+    <div align="center">
+
+            <br><br><br><br><br><br>
+        <h1> Welcome in Movie Review </h1>
+            	<br><br><br><br>
+
+			<button th:action="@{/accueil}">Back to the future</button><br><br>
+
+			<form method="POST" th:action="@{/research}" th:object="${filmdto}">
+				<input id="research" type="text" name="title" 
+					placeholder="Find u're movie bro" th:value="${title}">
+				<button type="submit">GO</button>
+			</form>
+
+            <br>
+            <u><h2 data-th-text="${movie[0]}"></h2></u>
+            <img data-th-src="${movie[1]}"></img>
+            <p data-th-text="${movie[2]}"></p>
+            <img src="../static/Heart_Like.png" width="20" height="20" th:src="@{Heart_Like.png}"/>
+            <p data-th-text="${movie[4]}"></p>
+            <form method="POST" data-th-action="@{/like}" th:object="${film}">
+                    <input type="hidden" name="idFilm" th:value="${movie[3]}"/>
+                    <br>
+                    <input type="submit" value="Like !"/>
+                </form>
+                
+                <form method="POST" data-th-action="${'/dislike/'+{movie[3]}}" data-th-object="${film}">
+					<input type="hidden" name="idFilm" th:value="${movie[3]}"/>
+                    <br>
+                    <input type="submit" value="Dislike !"/>
+                </form>
+    </div>
+</body>
+</html>

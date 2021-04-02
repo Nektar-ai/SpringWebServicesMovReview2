@@ -2,6 +2,10 @@ package fr.epsi.SpringMovReview.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +14,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
+
+import org.springframework.web.bind.ServletRequestUtils;
+
+import fr.epsi.SpringMovReview.dto.FilmDTO;
 import fr.epsi.SpringMovReview.entity.Film;
 import fr.epsi.SpringMovReview.service.MovieService;
 
@@ -20,7 +31,7 @@ public class AccueilController {
 	private MovieService movieService;
 	
 	@GetMapping("/")
-	public String accueillir(@ModelAttribute("movies") ArrayList<String[]> m, @ModelAttribute Film film, Model model) {
+	public String accueillir(@ModelAttribute("movies") ArrayList<String[]> m, @ModelAttribute Film film, @ModelAttribute FilmDTO filmdto, Model model) {
 		
 		String webImgPath = "https://image.tmdb.org/t/p/w500";
 		String jsonServRemote;
@@ -56,8 +67,34 @@ public class AccueilController {
 		
 		model.addAttribute("movies", movieList);
 		model.addAttribute("film", film);		
+		model.addAttribute("filmdto", filmdto);
 		
 		return "accueil";
+	}
+	
+	@PostMapping("/research")
+	public String research(@ModelAttribute Film film, @ModelAttribute FilmDTO filmdto, Model model) throws IOException {
+		
+		String jsonServRemote;
+		String webImgPath = "https://image.tmdb.org/t/p/w500";
+		String title = filmdto.getTitle();
+				
+		jsonServRemote = movieService.loadJsonResearch(title);
+		JSONObject obj = new JSONObject(jsonServRemote);
+		JSONArray res = obj.getJSONArray("results");
+		
+		ArrayList<String> movie = new ArrayList<String>();
+		for (int i = 0; i < res.length() ; i++)
+		{
+			movie.add(res.getJSONObject(0).getString("original_title")); 
+			movie.add(webImgPath+res.getJSONObject(0).getString("poster_path"));			
+			movie.add(res.getJSONObject(0).getString("overview"));
+			movie.add(res.getJSONObject(0).getString("id"));
+		}
+		
+		model.addAttribute("movie", movie);
+		
+		return "research";
 	}
 
 	@PostMapping("/like")
