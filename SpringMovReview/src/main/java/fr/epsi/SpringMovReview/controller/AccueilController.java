@@ -57,7 +57,8 @@ public class AccueilController {
 						webImgPath+res.getJSONObject(i).getString("poster_path"),					
 						res.getJSONObject(i).getString("overview"),
 						res.getJSONObject(i).getString("id"),
-						s};				
+						s,
+						res.getJSONObject(i).getString("backdrop_path")};				
 				movieList.add(mov);
 			}
 				
@@ -99,6 +100,7 @@ public class AccueilController {
 			movie.add(res.getJSONObject(0).getString("overview"));
 			movie.add(res.getJSONObject(0).getString("id"));
 			movie.add(s);
+			movie.add(res.getJSONObject(0).getString("backdrop_path"));
 		}
 		
 		model.addAttribute("movie", movie);
