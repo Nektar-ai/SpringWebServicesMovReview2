@@ -62,7 +62,7 @@ public class Results {
 				"\"id\":\"" + id +
 				"\", \"original_title\":\"" + original_title +
 				"\", \"overview\":\"" + overview.replaceAll("\"", "\\\'") +
-				"\", \"poster_path\":\"" + poster_path + '"' +
+				"\", \"poster_path\":\"" + poster_path +
 				"\", \"backdrop_path\":\"" + backdrop_path + '"' +
 				'}';		
 	}	

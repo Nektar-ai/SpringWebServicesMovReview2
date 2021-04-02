@@ -33,7 +33,8 @@ public class AccueilController {
 	@GetMapping("/")
 	public String accueillir(@ModelAttribute("movies") ArrayList<String[]> m, @ModelAttribute Film film, @ModelAttribute FilmDTO filmdto, Model model) {
 		
-		String webImgPath = "https://image.tmdb.org/t/p/w500";
+			String webImgPath = "https://image.tmdb.org/t/p/w500";
+		String webBckPath = "https://image.tmdb.org/t/p/original";
 		String jsonServRemote;
 		ArrayList<String[]> movieList = new ArrayList<String[]>();
 		try {					
@@ -58,7 +59,7 @@ public class AccueilController {
 						res.getJSONObject(i).getString("overview"),
 						res.getJSONObject(i).getString("id"),
 						s,
-						res.getJSONObject(i).getString("backdrop_path")};				
+						webBckPath+res.getJSONObject(i).getString("backdrop_path")};
 				movieList.add(mov);
 			}
 				
@@ -78,6 +79,7 @@ public class AccueilController {
 		
 		String jsonServRemote;
 		String webImgPath = "https://image.tmdb.org/t/p/w500";
+		String webBckPath = "https://image.tmdb.org/t/p/original";
 		String title = filmdto.getTitle();
 				
 		jsonServRemote = movieService.loadJsonResearch(title);
@@ -100,7 +102,7 @@ public class AccueilController {
 			movie.add(res.getJSONObject(0).getString("overview"));
 			movie.add(res.getJSONObject(0).getString("id"));
 			movie.add(s);
-			movie.add(res.getJSONObject(0).getString("backdrop_path"));
+			movie.add(webBckPath+res.getJSONObject(0).getString("backdrop_path"));
 		}
 		
 		model.addAttribute("movie", movie);
