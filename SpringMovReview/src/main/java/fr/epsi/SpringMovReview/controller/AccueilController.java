@@ -86,10 +86,19 @@ public class AccueilController {
 		ArrayList<String> movie = new ArrayList<String>();
 		for (int i = 0; i < res.length() ; i++)
 		{
+			String s;
+			film = movieService.findFilmByIdFilm(res.getJSONObject(i).getString("id"));
+			if (film == null)
+			{
+				s = "0";
+			} else {
+				s = String.valueOf(film.getLikes());
+			}
 			movie.add(res.getJSONObject(0).getString("original_title")); 
 			movie.add(webImgPath+res.getJSONObject(0).getString("poster_path"));			
 			movie.add(res.getJSONObject(0).getString("overview"));
 			movie.add(res.getJSONObject(0).getString("id"));
+			movie.add(s);
 		}
 		
 		model.addAttribute("movie", movie);

@@ -12,6 +12,10 @@
 
 	<div align="center">
 
+            <br><br><br><br><br><br>
+        <h1> Welcome in Movie Review </h1>
+            	<br><br><br><br>
+
 		<form method="POST" th:action="@{/research}" th:object="${filmdto}">
 			<input id="research" type="text" name="title" 
 				placeholder="Find u're movie bro" th:value="${title}">
@@ -20,7 +24,7 @@
 
 		<div class="d-flex flex-wrap w-full">
         	<div class="position-relative my-3 d-flex w-100 justify-content-center">
-            	<div class="flex-column bgdivdad position-absolute d-flex p-3 homerounded">
+            	<div class="my-5 flex-column bgdivdad position-absolute d-flex p-3 homerounded">
 		            
 		        	<div class="p-0 img d-flex col-6 justify-content-center">
 	                	<img class="w-100 homerounded" data-th-src="${movie[1]}"></img>
