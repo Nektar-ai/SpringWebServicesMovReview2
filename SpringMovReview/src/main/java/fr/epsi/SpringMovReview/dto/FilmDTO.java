@@ -1,9 +1,5 @@
 package fr.epsi.SpringMovReview.dto;
 
-import org.springframework.data.annotation.Id;
-
-import fr.epsi.SpringMovReview.entity.Film;
-
 public class FilmDTO {
 
     public String title;

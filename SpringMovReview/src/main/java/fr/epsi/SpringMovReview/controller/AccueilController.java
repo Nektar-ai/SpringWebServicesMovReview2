@@ -2,10 +2,6 @@ package fr.epsi.SpringMovReview.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
-
-import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
-
-import org.springframework.web.bind.ServletRequestUtils;
 
 import fr.epsi.SpringMovReview.dto.FilmDTO;
 import fr.epsi.SpringMovReview.entity.Film;
@@ -30,7 +20,7 @@ public class AccueilController {
 	@Autowired
 	private MovieService movieService;
 	
-	@GetMapping("/")
+	@GetMapping(value={"/api/home", "/"})
 	public String accueillir(@ModelAttribute("movies") ArrayList<String[]> m, @ModelAttribute Film film, @ModelAttribute FilmDTO filmdto, Model model) {
 		
 			String webImgPath = "https://image.tmdb.org/t/p/w500";
@@ -74,7 +64,45 @@ public class AccueilController {
 		return "accueil";
 	}
 	
-	@PostMapping("/research")
+	@GetMapping("/api/research/{id}")
+	public String details(@ModelAttribute Film film, @ModelAttribute FilmDTO filmdto, @PathVariable(value="id") String id  ,Model model) throws IOException {
+		
+		film = movieService.findFilmByIdFilm(id);
+		if (film == null)
+		{
+			String jsonServRemote;
+			String webImgPath = "https://image.tmdb.org/t/p/w500";
+			String webBckPath = "https://image.tmdb.org/t/p/original";
+			String title = filmdto.getTitle();
+					
+			jsonServRemote = movieService.loadJsonResearch(title);
+			JSONObject obj = new JSONObject(jsonServRemote);
+			JSONArray res = obj.getJSONArray("results");
+			
+			ArrayList<String> movie = new ArrayList<String>();
+			for (int i = 0; i < res.length() ; i++)
+			{
+				String s;
+				film = movieService.findFilmByIdFilm(res.getJSONObject(i).getString("id"));
+				if (film == null)
+				{
+					s = "0";
+				} else {
+					s = String.valueOf(film.getLikes());
+				}
+				movie.add(res.getJSONObject(0).getString("original_title")); 
+				movie.add(webImgPath+res.getJSONObject(0).getString("poster_path"));			
+				movie.add(res.getJSONObject(0).getString("overview"));
+				movie.add(res.getJSONObject(0).getString("id"));
+				movie.add(s);
+				movie.add(webBckPath+res.getJSONObject(0).getString("backdrop_path"));
+			}
+		}
+		model.addAttribute("movie", film);
+		return "research";
+	}
+	
+	@PostMapping("/api/research")
 	public String research(@ModelAttribute Film film, @ModelAttribute FilmDTO filmdto, Model model) throws IOException {
 		
 		String jsonServRemote;
@@ -114,16 +142,14 @@ public class AccueilController {
 	public RedirectView like(@ModelAttribute Film film, Model model) {
 		model.addAttribute("film", film);
 		movieService.like(film);
-		System.out.println("Film liked APRES REPO : " + film.toString());
-		return new RedirectView("/");
+		return new RedirectView("/api/home");
 	}
 
 	@PostMapping("/dislike/{id}")
 	public String dislike(@ModelAttribute Film film, Model model) {
 		model.addAttribute("film", film);
 		movieService.dislike(film);
-		return "redirect:/";
+		return "redirect:/api/home";
 	}
 }
-
 

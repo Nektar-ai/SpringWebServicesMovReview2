@@ -15,10 +15,10 @@
         <h1> Welcome in Movie Review </h1>
             	<br><br><br><br>
 
-			<form method="POST" th:action="@{/research}" th:object="${filmdto}">
-				<input id="research" type="text" name="title" 
-					placeholder="Find u're movie bro" th:value="${title}">
-				<button type="submit">GO</button>
+			<form method="POST" th:action="@{/api/research}" th:object="${filmdto}" class="mb-5">
+				<input class="inputsearch" id="research" type="text" name="title" 
+					placeholder="Find your movie.." th:value="${title}">
+				<button class="btn btn-secondary ml-2" type="submit">GO</button>
 			</form>
 
             <br>

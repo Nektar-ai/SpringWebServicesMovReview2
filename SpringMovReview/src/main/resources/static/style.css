@@ -30,6 +30,19 @@
 	.zindex-8000{
 		z-index: 8000;
 	}
+	
+	.inputsearch {
+	
+		width:250px;
+	
+	}
+	
+	.butsearch {
+	
+		height: 20px;
+	
+	}
+	
 	.reverse:nth-child(even) .bgdivdad {
     
     	flex-direction: row-reverse;
@@ -137,15 +150,6 @@
 		top: calc(50% - (65px / 2));
 		left: calc(50% - (65px / 2));
 	}
-	
-	/* svg {
-	
-		height: 65px;
-		width: 65px;
-		top: calc(50% - (65px / 2));
-		left: calc(50% - (65px / 2));
-	
-	} */
 	
 	.buttonlike {
 	

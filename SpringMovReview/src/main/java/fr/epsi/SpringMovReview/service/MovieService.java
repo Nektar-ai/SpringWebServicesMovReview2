@@ -40,15 +40,9 @@ public class MovieService {
 	}
 	
 	public String loadJsonResearch (String title) throws IOException
-	{
-		/* TMDB API Key : 719886a0b8020a1ae30c9c5d174c01d3
-		 * Exemple API request : https://api.themoviedb.org/3/movie/550?api_key=719886a0b8020a1ae30c9c5d174c01d3
-		 * API Read Access Token (v4 auth) : eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MTk4ODZhMGI4MDIwYTFhZTMwYzljNWQxNzRjMDFkMyIsInN1YiI6IjYwMzhjMTlhMzIyYjJiMDA1NTI1NzkzOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jYvJTMpwaUNXjTBCXcBEsze0sLtJjUMaKlAyYgpM2fQ
-		 */
-		
+	{	
 		RestTemplate restTemplate = new RestTemplate();
 		MovieRestTemplate mrt = restTemplate.getForObject("https://api.themoviedb.org/3/search/movie?api_key=719886a0b8020a1ae30c9c5d174c01d3&language=fr-FR&query="+title.replace(' ', '+'), MovieRestTemplate.class);
-		//System.out.println(mrt.toString());
 		return mrt.toString();
 	}
 	
@@ -87,7 +81,4 @@ public class MovieService {
 		Film f = movieRepository.findByTitle(original_title);
 		return f;
 	}
-	
 }
-
-//Path fileName = Path.of("static/moviejson.txt");    
