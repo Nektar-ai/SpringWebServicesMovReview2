@@ -2,7 +2,8 @@
 
 	body {
 	
-		background-color: #e2d5d5!important
+		background-color: #e2d5d5!important;
+		overflow-x: hidden;
 	
 	}
 	
