@@ -9,7 +9,8 @@ public class Film {
     public String id;
     public String idFilm;
     public String title;
-    public int likes;
+    public String backdrop_path;
+	public int likes;
     
     public Film() {
     }
@@ -17,14 +18,6 @@ public class Film {
     public Film(String id) {
         this.idFilm = id;
     }
-
-    public String getTitle() {
-		return title;
-	}
-
-	public void setName(String title) {
-		this.title = title;
-	}
 
 	public Film(String id, int likes) {
         this.idFilm = id;
@@ -37,6 +30,22 @@ public class Film {
     	this.likes = f.getLikes();
     	this.title = f.getTitle();
     }
+    
+    public String getBackdrop_path() {
+		return backdrop_path;
+	}
+
+	public void setBackdrop_path(String backdrop_path) {
+		this.backdrop_path = backdrop_path;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+    
+    public String getTitle() {
+		return title;
+	}
     
     public String getId() {
 		return id;

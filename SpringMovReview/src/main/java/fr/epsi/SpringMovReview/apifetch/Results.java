@@ -10,7 +10,20 @@ public class Results {
 	private String poster_path;
 	private String release_date;
 	private String original_title;
+	private String backdrop_path;
 	
+	public String getOriginal_title() {
+		return original_title;
+	}
+	public void setOriginal_title(String original_title) {
+		this.original_title = original_title;
+	}
+	public String getBackdrop_path() {
+		return backdrop_path;
+	}
+	public void setBackdrop_path(String backdrop_path) {
+		this.backdrop_path = backdrop_path;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -50,6 +63,7 @@ public class Results {
 				"\", \"original_title\":\"" + original_title +
 				"\", \"overview\":\"" + overview.replaceAll("\"", "\\\'") +
 				"\", \"poster_path\":\"" + poster_path + '"' +
+				"\", \"backdrop_path\":\"" + backdrop_path + '"' +
 				'}';		
 	}	
 }
